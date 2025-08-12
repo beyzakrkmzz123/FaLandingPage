@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 function Header() {
   const { t, i18n } = useTranslation();
@@ -17,36 +18,21 @@ function Header() {
       </div>
 
       <div className="flex items-center space-x-8 text-sm font-medium">
-        <div
-          onClick={() => (window.location.href = "/")}
-          className="hover:text-purple-400 cursor-pointer"
-        >
+        <Link to="/" className="hover:text-purple-400 cursor-pointer">
           {t("Ana Sayfa")}
-        </div>
-        <div
-          onClick={() => (window.location.href = "/falcilar")}
-          className="hover:text-purple-400 cursor-pointer"
-        >
+        </Link>
+        <Link to="/falcilar" className="hover:text-purple-400 cursor-pointer">
           {t("Falcılar")}
-        </div>
-        <div
-          onClick={() => (window.location.href = "/falturleri")}
-          className="hover:text-purple-400 cursor-pointer"
-        >
+        </Link>
+        <Link to="/falturleri" className="hover:text-purple-400 cursor-pointer">
           {t("Fal Türleri")}
-        </div>
-        <div
-          onClick={() => (window.location.href = "/hakkimizda")}
-          className="hover:text-purple-400 cursor-pointer"
-        >
+        </Link>
+        <Link to="/hakkimizda" className="hover:text-purple-400 cursor-pointer">
           {t("Hakkımızda")}
-        </div>
-        <div
-          onClick={() => (window.location.href = "/iletisim")}
-          className="hover:text-purple-500 cursor-pointer"
-        >
+        </Link>
+        <Link to="/iletisim" className="hover:text-purple-500 cursor-pointer">
           {t("İletişim")}
-        </div>
+        </Link>
       </div>
 
       <div className="flex items-center space-x-4 relative">
@@ -80,18 +66,18 @@ function Header() {
           )}
         </div>
 
-        <div
-          onClick={() => (window.location.href = "/login")}
+        <Link
+          to="/login"
           className="bg-gradient-to-r from-purple-500 to-purple-800 px-4 py-2 rounded-full font-semibold hover:opacity-90 cursor-pointer select-none"
         >
           {t("Giriş Yap")}
-        </div>
-        <div
-          onClick={() => (window.location.href = "/signup")}
+        </Link>
+        <Link
+          to="/signup"
           className="border border-gray-400 px-4 py-2 rounded-full hover:bg-gray-700 cursor-pointer select-none"
         >
           {t("Üye Ol")}
-        </div>
+        </Link>
       </div>
     </div>
   );
