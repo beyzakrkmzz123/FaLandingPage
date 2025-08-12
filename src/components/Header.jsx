@@ -1,0 +1,100 @@
+import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
+
+function Header() {
+  const { t, i18n } = useTranslation();
+  const [showLangMenu, setShowLangMenu] = useState(false);
+
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+    setShowLangMenu(false);
+  };
+
+  return (
+    <div className="w-full bg-[#0B0B17] px-8 py-4 flex justify-between items-center text-white select-none sticky top-0 z-50">
+      <div className="text-lg font-bold cursor-default select-text">
+        Falsız Kalma
+      </div>
+
+      <div className="flex items-center space-x-8 text-sm font-medium">
+        <div
+          onClick={() => (window.location.href = "/")}
+          className="hover:text-purple-400 cursor-pointer"
+        >
+          {t("Ana Sayfa")}
+        </div>
+        <div
+          onClick={() => (window.location.href = "/falcilar")}
+          className="hover:text-purple-400 cursor-pointer"
+        >
+          {t("Falcılar")}
+        </div>
+        <div
+          onClick={() => (window.location.href = "/falturleri")}
+          className="hover:text-purple-400 cursor-pointer"
+        >
+          {t("Fal Türleri")}
+        </div>
+        <div
+          onClick={() => (window.location.href = "/hakkimizda")}
+          className="hover:text-purple-400 cursor-pointer"
+        >
+          {t("Hakkımızda")}
+        </div>
+        <div
+          onClick={() => (window.location.href = "/iletisim")}
+          className="hover:text-purple-500 cursor-pointer"
+        >
+          {t("İletişim")}
+        </div>
+      </div>
+
+      <div className="flex items-center space-x-4 relative">
+        <div className="relative">
+          <div
+            onClick={() => setShowLangMenu(!showLangMenu)}
+            className="border border-gray-400 px-3 py-1 rounded-full hover:bg-gray-700 text-sm cursor-pointer select-none"
+          >
+            {t("Dil")}
+          </div>
+
+          {showLangMenu && (
+            <div className="absolute right-0 mt-2 w-28 bg-black border border-gray-600 rounded-md shadow-lg text-sm">
+              <div
+                className={`px-4 py-2 cursor-pointer hover:bg-purple-600 ${
+                  i18n.language === "tr" ? "bg-purple-700" : ""
+                }`}
+                onClick={() => changeLanguage("tr")}
+              >
+                Türkçe
+              </div>
+              <div
+                className={`px-4 py-2 cursor-pointer hover:bg-purple-600 ${
+                  i18n.language === "en" ? "bg-purple-700" : ""
+                }`}
+                onClick={() => changeLanguage("en")}
+              >
+                English
+              </div>
+            </div>
+          )}
+        </div>
+
+        <div
+          onClick={() => (window.location.href = "/login")}
+          className="bg-gradient-to-r from-purple-500 to-purple-800 px-4 py-2 rounded-full font-semibold hover:opacity-90 cursor-pointer select-none"
+        >
+          {t("Giriş Yap")}
+        </div>
+        <div
+          onClick={() => (window.location.href = "/signup")}
+          className="border border-gray-400 px-4 py-2 rounded-full hover:bg-gray-700 cursor-pointer select-none"
+        >
+          {t("Üye Ol")}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default Header;
